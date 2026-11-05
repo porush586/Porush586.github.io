@@ -1,1 +1,577 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Porush Blogs — Explore technology, education, current affairs, science and ideas.">
+<title>Porush Blogs | Ideas Beyond Boundaries</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f7f6f2;
+  --paper: #ffffff;
+  --ink: #17243a;
+  --muted: #727b88;
+  --accent: #b58a52;
+  --line: #e8e5df;
+  --dark: #142238;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.topbar {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 9px 15px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 27px 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.logo span { color: var(--accent); }
+
+.tagline {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+nav {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+nav a:hover { color: var(--accent); }
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 25px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 24px;
+  margin: auto;
+}
+
+.hero {
+  padding: 48px 0 35px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.08;
+  max-width: 800px;
+  letter-spacing: -2px;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 16px;
+  max-width: 580px;
+}
+
+.featured {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  background: var(--dark);
+  color: white;
+  overflow: hidden;
+  border-radius: 5px;
+  min-height: 370px;
+}
+
+.featured-image {
+  min-height: 370px;
+  background:
+    linear-gradient(0deg, rgba(10,20,35,.2), transparent),
+    url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85')
+    center/cover;
+}
+
+.featured-content {
+  padding: 45px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.featured h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  line-height: 1.25;
+  margin: 18px 0;
+}
+
+.featured p {
+  color: #c1cad5;
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 25px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 55px 0 24px;
+  gap: 15px;
+}
+
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filter {
+  border: 1px solid var(--line);
+  background: white;
+  padding: 9px 17px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.filter.active, .filter:hover {
+  background: var(--dark);
+  color: white;
+  border-color: var(--dark);
+}
+
+.search-box {
+  width: 100%;
+  max-width: 360px;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 4px;
+  font-family: inherit;
+  outline: none;
+  margin-bottom: 25px;
+}
+
+.search-box:focus { border-color: var(--accent); }
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px #17243a12;
+}
+
+.card-image {
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
+  display: block;
+  background: #e8e5df;
+}
+
+.card-body { padding: 23px; }
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  line-height: 1.4;
+  margin: 12px 0;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.empty {
+  display: none;
+  color: var(--muted);
+  padding: 35px 0;
+}
+
+.about {
+  background: var(--dark);
+  color: white;
+  margin-top: 75px;
+  padding: 65px 24px;
+  text-align: center;
+}
+
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.about p {
+  max-width: 650px;
+  margin: auto;
+  color: #c1cad5;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+footer {
+  background: #101b2c;
+  color: #c1cad5;
+  padding: 28px 20px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 2;
+}
+
+footer strong { color: white; }
+
+@media(max-width: 800px) {
+  .featured { grid-template-columns: 1fr; }
+  .featured-image { min-height: 250px; }
+  .featured-content { padding: 30px 25px; }
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  nav { gap: 13px; font-size: 11px; }
+}
+
+@media(max-width: 600px) {
+  .header-inner { flex-wrap: wrap; padding: 20px; }
+  .logo { font-size: 27px; }
+  .menu-btn { display: block; }
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0;
+  }
+  nav.open { display: flex; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 35px; }
+  .section-head { align-items: flex-start; flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  A WORLD OF IDEAS · KNOWLEDGE · DISCOVERY
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <div class="logo">PORUSH<span>.</span></div>
+      <div class="tagline">BLOGS & JOURNAL</div>
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+
+    <nav id="navigation">
+      <a href="#">Home</a>
+      <a href="#articles">Articles</a>
+      <a href="#about">About</a>
+      <a href="mailto:hello@porushblogs.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="eyebrow">THE DIGITAL JOURNAL</div>
+    <h1>Ideas that inspire.<br><span>Knowledge that matters.</span></h1>
+    <p>
+      Welcome to Porush Blogs — a place to explore ideas,
+      understand the world, discover technology and learn
+      something new every day.
+    </p>
+  </section>
+
+  <section class="featured">
+    <div class="featured-image"></div>
+    <div class="featured-content">
+      <div class="category">EDITOR'S PICK · FEATURED</div>
+      <h2>Curiosity is the beginning of every great discovery.</h2>
+      <p>
+        Explore a world of knowledge, fresh perspectives
+        and ideas that help us understand the changing world.
+      </p>
+      <a href="#articles" class="read-more">EXPLORE ARTICLES →</a>
+    </div>
+  </section>
+
+  <section id="articles">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">EXPLORE THE JOURNAL</div>
+        <h2>Latest Stories</h2>
+      </div>
+      <p>Ideas worth your time.</p>
+    </div>
+
+    <input
+      type="search"
+      id="search"
+      class="search-box"
+      placeholder="Search articles..."
+      aria-label="Search articles"
+      oninput="filterArticles()"
+    >
+
+    <div class="filters">
+      <button class="filter active" onclick="setCategory('All',this)">All</button>
+      <button class="filter" onclick="setCategory('Technology',this)">Technology</button>
+      <button class="filter" onclick="setCategory('Education',this)">Education</button>
+      <button class="filter" onclick="setCategory('Current Affairs',this)">Current Affairs</button>
+      <button class="filter" onclick="setCategory('Science',this)">Science</button>
+      <button class="filter" onclick="setCategory('Ideas',this)">Ideas</button>
+    </div>
+
+    <div class="blog-grid" id="blogGrid">
+
+      <article class="card" data-category="Technology">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+          alt="Artificial intelligence technology">
+        <div class="card-body">
+          <div class="category">TECHNOLOGY</div>
+          <h3>Understanding Artificial Intelligence</h3>
+          <p>Discover how AI is transforming the way we live, work and interact with technology.</p>
+          <a href="mailto:hello@porushblogs.com?subject=AI%20Article" class="card-link">READ MORE →</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Education">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80"
+          alt="Library and books">
+        <div class="card-body">
+          <div class="category">EDUCATION</div>
+          <h3>The Power of Lifelong Learning</h3>
+          <p>Why continuous learning and curiosity are important in a rapidly changing world.</p>
+          <a href="mailto:hello@porushblogs.com?subject=Education%20Article" class="card-link">READ MORE →</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Current Affairs">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=800&q=80"
+          alt="Newspapers and current affairs">
+        <div class="card-body">
+          <div class="category">CURRENT AFFAIRS</div>
+          <h3>Understanding Our Changing World</h3>
+          <p>Explore important developments and understand the ideas shaping our society.</p>
+          <a href="mailto:hello@porushblogs.com?subject=Current%20Affairs" class="card-link">READ MORE →</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Science">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+          alt="Earth and space">
+        <div class="card-body">
+          <div class="category">SCIENCE</div>
+          <h3>Exploring the Wonders of Science</h3>
+          <p>From space exploration to scientific discoveries, understand the universe around us.</p>
+          <a href="mailto:hello@porushblogs.com?subject=Science%20Article" class="card-link">READ MORE →</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Ideas">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"
+          alt="Writing in a notebook">
+        <div class="card-body">
+          <div class="category">IDEAS & THOUGHTS</div>
+          <h3>The Art of Thinking Differently</h3>
+          <p>Discover how new perspectives can change the way we approach everyday challenges.</p>
+          <a href="mailto:hello@porushblogs.com?subject=Ideas%20Article" class="card-link">READ MORE →</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Technology">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          alt="Computer technology">
+        <div class="card-body">
+          <div class="category">TECHNOLOGY</div>
+          <h3>Technology and the Future</h3>
+          <p>A look at emerging technologies and their potential impact on tomorrow.</p>
+          <a href="mailto:hello@porushblogs.com?subject=Future%20Technology" class="card-link">READ MORE →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="empty" id="empty">No matching articles found. Try another search.</p>
+  </section>
+
+</main>
+
+<section class="about" id="about">
+  <div class="eyebrow">ABOUT THE AUTHOR</div>
+  <h2>Hi, I'm Porush Sharma.</h2>
+  <p>
+    Welcome to my digital journal. I'm passionate about exploring
+    knowledge, technology, education, science and the world around us.
+    This platform is created to share ideas, encourage curiosity
+    and make learning interesting.
+  </p>
+</section>
+
+<footer>
+  <strong>PORUSH BLOGS</strong><br>
+  Ideas Beyond Boundaries.<br>
+  © 2026 Porush Sharma. All rights reserved.
+</footer>
+
+<script>
+let selectedCategory = 'All';
+
+function toggleMenu() {
+  document.getElementById('navigation').classList.toggle('open');
+}
+
+function setCategory(category, button) {
+  selectedCategory = category;
+
+  document.querySelectorAll('.filter').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  button.classList.add('active');
+  filterArticles();
+}
+
+function filterArticles() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const cards = document.querySelectorAll('.card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const category = card.dataset.category;
+    const content = card.innerText.toLowerCase();
+
+    const matchesCategory =
+      selectedCategory === 'All' || category === selectedCategory;
+
+    const matchesSearch = content.includes(search);
+    const show = matchesCategory && matchesSearch;
+
+    card.style.display = show ? '' : 'none';
+
+    if (show) visible++;
+  });
+
+  document.getElementById('empty').style.display =
+    visible === 0 ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
+
