@@ -29,14 +29,7 @@ content:
         type: select
         options:
           values:
-            - Technology
-            - Education
-            - Science
-            - Current Affairs
-            - Knowledge
-            - Lifestyle
             - Personal
-            - Other
 
       - name: date
         label: Publish Date
