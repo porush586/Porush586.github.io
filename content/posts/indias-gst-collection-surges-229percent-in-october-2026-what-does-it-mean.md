@@ -32,6 +32,7 @@ GST is collected through different components:
 - **Net GST revenue:** Approximately ₹2.03 lakh crore.
 - October's collection was the second-highest monthly gross collection reported in 2026, after April's ₹2.43 lakh crore.
 ![GST Collection Infographic](/media/db6636e5-a868-4e4b-af7c-6e1246ea2d5b-1.png)
+
 ## 3. Why is Higher GST Collection Important?
 
 Higher GST collection can indicate several economic developments:
