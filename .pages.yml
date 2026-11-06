@@ -24,7 +24,7 @@ content:
         label: Short Description
         type: text
 
-            - name: category
+      - name: category
         label: Category
         type: select
         options:
