@@ -10,6 +10,7 @@ description: >-
   revenue trends.
 category: Economy
 date: 2026-11-06
+cover: /media/db6636e5-a868-4e4b-af7c-6e1246ea2d5b-1.png
 ---
 ## 1. What is GST?
 
