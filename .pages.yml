@@ -24,12 +24,24 @@ content:
         label: Short Description
         type: text
 
-      - name: category
+            - name: category
         label: Category
         type: select
         options:
           values:
             - Personal
+            - Current Affairs
+            - Politics
+            - UPSC Preparation
+            - History
+            - Indian Polity
+            - Geography
+            - Economy
+            - Science and Technology
+            - Environment
+            - Ethics
+            - Government Schemes
+            - Bihar Special
 
       - name: date
         label: Publish Date
