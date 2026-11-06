@@ -2,594 +2,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Porush Blogs | Dream • Write • Inspire</title>
-  <meta name="description" content="Welcome to Porush Blogs. Read my personal journey, thoughts and experiences.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Porush Blogs | Dream • Write • Inspire</title>
+<meta name="description" content="Read the thoughts, stories and ideas of Porush Sharma.">
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <style>
-    :root {
-      --purple: #682bd1;
-      --purple-dark: #4b16a8;
-      --light: #f8f6ff;
-      --dark: #17172d;
-      --muted: #68677a;
-      --border: #e9e3f5;
-    }
+<style>
+:root {
+  --purple:#682bd1;
+  --purple-dark:#4b16a8;
+  --light:#f8f6ff;
+  --dark:#17172d;
+  --muted:#68677a;
+  --border:#e9e3f5;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+  font-family:Poppins,sans-serif;
+  color:var(--dark);
+  background:white;
+  line-height:1.6;
+}
+a {text-decoration:none;color:inherit}
 
-    html { scroll-behavior: smooth; }
+.navbar {
+  min-height:80px;
+  padding:12px 4%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:white;
+  box-shadow:0 2px 15px #21104410;
+}
+.logo {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo-icon {font-size:40px}
+.logo h1 {font-size:27px;font-weight:800;line-height:1.2}
+.logo h1 span {color:var(--purple)}
+.tagline {font-size:12px;text-align:center}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: var(--dark);
-      line-height: 1.6;
-    }
+nav {display:flex;gap:10px;flex-wrap:wrap}
+nav a {
+  padding:9px 15px;
+  border-radius:30px;
+  font-weight:600;
+}
+nav a:hover,nav a.active {
+  background:var(--purple);
+  color:white;
+}
 
-    a { text-decoration: none; color: inherit; }
+.hero {
+  min-height:350px;
+  padding:65px 5%;
+  display:flex;
+  align-items:center;
+  color:white;
+  background:
+  linear-gradient(90deg,#101b42 0%,#101b4280 55%,#101b4210 100%),
+  url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85')
+  center/cover;
+}
+.hero-content {max-width:600px}
+.hero h2 {
+  font-size:clamp(38px,5vw,58px);
+  line-height:1.15;
+  margin-bottom:15px;
+}
+.hero h2 span {color:#d6b8ff}
+.hero p {font-size:17px;margin-bottom:24px}
 
-    .navbar {
-      min-height: 82px;
-      padding: 12px 4%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      background: white;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 15px #21104410;
-    }
+.btn,.read-btn {
+  display:inline-block;
+  border:0;
+  cursor:pointer;
+  background:var(--purple);
+  color:white;
+  padding:11px 22px;
+  border-radius:9px;
+  font-family:inherit;
+  font-weight:600;
+}
+.btn {border-radius:30px}
+.btn:hover,.read-btn:hover {background:var(--purple-dark)}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.main {
+  max-width:1450px;
+  margin:auto;
+  padding:38px 3%;
+  display:grid;
+  grid-template-columns:minmax(0,2fr) minmax(280px,.9fr);
+  gap:35px;
+}
 
-    .logo-icon {
-      font-size: 42px;
-      color: var(--purple);
-    }
+.section-heading {
+  font-size:28px;
+  margin-bottom:22px;
+  border-left:5px solid var(--purple);
+  padding-left:15px;
+}
 
-    .logo h1 {
-      font-size: 29px;
-      line-height: 1.1;
-      font-weight: 800;
-    }
+.article-card {
+  display:grid;
+  grid-template-columns:44% 1fr;
+  border:1px solid var(--border);
+  border-radius:13px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #28104a0b;
+}
+.article-image {
+  width:100%;
+  height:100%;
+  min-height:270px;
+  object-fit:cover;
+}
+.article-info {
+  padding:25px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.category {
+  display:inline-block;
+  width:fit-content;
+  background:#eee3ff;
+  color:var(--purple-dark);
+  border-radius:25px;
+  padding:5px 13px;
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:12px;
+}
+.article-info h3 {font-size:25px;line-height:1.3;margin-bottom:12px}
+.article-info p,.latest-card p {color:var(--muted)}
+.article-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  color:var(--muted);
+  font-size:13px;
+  margin:15px 0;
+}
 
-    .logo h1 span { color: var(--purple); }
+.latest-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.latest-card {
+  border:1px solid var(--border);
+  border-radius:13px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #28104a0b;
+  background:white;
+}
+.latest-card img {
+  width:100%;
+  height:190px;
+  object-fit:cover;
+}
+.latest-card-content {padding:18px}
+.latest-card h3 {font-size:19px;line-height:1.4;margin-bottom:9px}
+.latest-card p {font-size:14px}
+.latest-card .read-btn {margin-top:12px}
 
-    .tagline {
-      font-size: 13px;
-      text-align: center;
-      font-weight: 500;
-    }
+.sidebar {display:flex;flex-direction:column;gap:20px}
+.side-card {
+  background:var(--light);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:23px;
+}
+.side-card h3 {font-size:22px;margin-bottom:17px}
+.side-card h3:after {
+  content:"";
+  display:block;
+  width:45px;
+  height:3px;
+  background:var(--purple);
+  margin-top:7px;
+}
+.profile {display:flex;align-items:center;gap:14px;margin-bottom:15px}
+.profile img {width:80px;height:80px;border-radius:50%;object-fit:cover}
+.profile h4 {font-size:18px}
+.profile p {font-size:13px;color:var(--muted)}
+.about-text {font-size:14px}
+.quote {
+  margin-top:18px;
+  padding:18px;
+  text-align:center;
+  border-radius:10px;
+  background:#eadcff;
+  color:#402078;
+  font-size:20px;
+  font-weight:600;
+  font-style:italic;
+}
+.social-links {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-top:18px;
+}
+.social-links a {font-size:23px;font-weight:700}
+.social-links a:hover {color:var(--purple)}
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.article-full {
+  display:none;
+  padding:28px;
+  margin-top:25px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  line-height:1.9;
+}
+.article-full h1,.article-full h2,.article-full h3 {margin:20px 0 10px}
+.article-full p {margin:12px 0}
+.article-full img {max-width:100%;border-radius:10px}
+.article-full a {color:var(--purple)}
+.article-full ul,.article-full ol {padding-left:25px}
+.article-full pre {
+  overflow:auto;
+  padding:15px;
+  background:#f1eff5;
+  border-radius:8px;
+}
+.status {color:var(--muted);padding:20px;text-align:center}
 
-    nav a {
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: .2s;
-    }
+footer {
+  background:#17172d;
+  color:white;
+  padding:25px 4%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  font-size:13px;
+}
+footer span {color:#d6b8ff}
 
-    nav a:hover, nav a.active {
-      color: white;
-      background: var(--purple);
-    }
-
-    .hero {
-      min-height: 350px;
-      padding: 65px 5%;
-      display: flex;
-      align-items: center;
-      color: white;
-      background:
-        linear-gradient(90deg, #101b42 0%, #101b4280 48%, #101b4210 100%),
-        url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85')
-        center 48% / cover;
-    }
-
-    .hero-content { max-width: 600px; }
-
-    .hero h2 {
-      font-size: clamp(38px, 5vw, 58px);
-      line-height: 1.15;
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
-
-    .hero h2 span { color: #d6b8ff; }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 24px;
-      max-width: 520px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      border-radius: 30px;
-      background: var(--purple);
-      color: white;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .btn:hover {
-      background: var(--purple-dark);
-      transform: translateY(-2px);
-    }
-
-    .main {
-      max-width: 1450px;
-      margin: auto;
-      padding: 35px 3%;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(280px, .9fr);
-      gap: 35px;
-    }
-
-    .section-heading {
-      font-size: 29px;
-      font-weight: 700;
-      margin-bottom: 22px;
-      border-left: 5px solid var(--purple);
-      padding-left: 17px;
-    }
-
-    .article-card {
-      display: grid;
-      grid-template-columns: 44% 1fr;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px #28104a0b;
-      background: white;
-    }
-
-    .article-image {
-      width: 100%;
-      height: 100%;
-      min-height: 270px;
-      object-fit: cover;
-    }
-
-    .article-info {
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .category {
-      display: inline-block;
-      background: #eee3ff;
-      color: var(--purple-dark);
-      border-radius: 25px;
-      padding: 5px 13px;
-      font-size: 13px;
-      font-weight: 600;
-      width: fit-content;
-      margin-bottom: 12px;
-    }
-
-    .article-info h3 {
-      font-size: 25px;
-      line-height: 1.3;
-      margin-bottom: 12px;
-    }
-
-    .article-info p { color: var(--muted); }
-
-    .article-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      color: var(--muted);
-      font-size: 13px;
-      margin: 18px 0;
-    }
-
-    .read-btn {
-      align-self: flex-start;
-      border: 0;
-      cursor: pointer;
-      font: inherit;
-      font-weight: 600;
-      background: var(--purple);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-    }
-
-    .read-btn:hover { background: var(--purple-dark); }
-
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .side-card {
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 23px;
-    }
-
-    .side-card h3 {
-      font-size: 22px;
-      margin-bottom: 15px;
-    }
-
-    .side-card h3::after {
-      content: "";
-      display: block;
-      width: 45px;
-      height: 3px;
-      margin-top: 7px;
-      background: var(--purple);
-    }
-
-    .profile {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .profile img {
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .profile h4 { font-size: 18px; }
-
-    .profile p {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .about-text { font-size: 14px; }
-
-    .quote {
-      text-align: center;
-      background: #eadcff;
-      color: #402078;
-      font-size: 21px;
-      font-weight: 600;
-      font-style: italic;
-      border-radius: 10px;
-      padding: 18px;
-      margin-top: 17px;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      font-size: 25px;
-      font-weight: 700;
-      transition: .2s;
-    }
-
-    .social-links a:hover {
-      color: var(--purple);
-      transform: translateY(-3px);
-    }
-
-    .article-full {
-      display: none;
-      padding: 30px;
-      margin-top: 25px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      line-height: 1.9;
-    }
-
-    .article-full h1, .article-full h2,
-    .article-full h3 { margin: 20px 0 10px; }
-
-    .article-full p { margin: 12px 0; }
-
-    .article-full img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
-    .article-full a { color: var(--purple); }
-
-    .article-full ul, .article-full ol {
-      padding-left: 25px;
-    }
-
-    .status {
-      color: var(--muted);
-      padding: 20px;
-      text-align: center;
-    }
-
-    footer {
-      background: #17172d;
-      color: white;
-      padding: 22px 4%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      font-size: 13px;
-    }
-
-    footer span { color: #d6b8ff; }
-
-    @media (max-width: 850px) {
-      .main { grid-template-columns: 1fr; }
-      .sidebar { display: grid; grid-template-columns: 1fr 1fr; }
-      nav { gap: 2px; }
-      nav a { padding: 8px 10px; font-size: 13px; }
-    }
-
-    @media (max-width: 600px) {
-      .navbar { flex-direction: column; gap: 12px; }
-      .logo h1 { font-size: 25px; }
-      .hero { min-height: 330px; padding: 45px 6%; }
-      .hero p { font-size: 15px; }
-      .article-card { grid-template-columns: 1fr; }
-      .article-image { height: 220px; min-height: 0; }
-      .article-info { padding: 20px; }
-      .article-info h3 { font-size: 21px; }
-      .sidebar { display: flex; }
-      footer { justify-content: center; text-align: center; }
-    }
-  </style>
+@media(max-width:850px) {
+  .main {grid-template-columns:1fr}
+  .sidebar {display:grid;grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px) {
+  .navbar {flex-direction:column}
+  nav {justify-content:center}
+  nav a {padding:7px 10px;font-size:13px}
+  .hero {min-height:320px;padding:40px 6%}
+  .article-card {grid-template-columns:1fr}
+  .article-image {height:220px;min-height:0}
+  .latest-grid {grid-template-columns:1fr}
+  .sidebar {display:flex}
+  footer {justify-content:center;text-align:center}
+}
+</style>
 </head>
 
 <body>
 
-  <header class="navbar">
-    <a href="#" class="logo">
-      <div class="logo-icon">📖</div>
+<header class="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">📖</div>
+    <div>
+      <h1>Porush <span>Blogs</span></h1>
+      <div class="tagline">Dream • Write • Inspire</div>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#blogs">Blogs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>Welcome to<br><span>Porush Blogs!</span></h2>
+    <p>A place where I share my thoughts, journey, knowledge and ideas with the world.</p>
+    <a href="#blogs" class="btn">Explore My Blogs →</a>
+  </div>
+</section>
+
+<main class="main">
+
+<section id="blogs">
+
+  <h2 class="section-heading">Featured Story</h2>
+
+  <div id="featured-container">
+    <p class="status">Loading featured story...</p>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:38px">Latest Stories</h2>
+
+  <div id="latest-container" class="latest-grid">
+    <p class="status">Loading latest stories...</p>
+  </div>
+
+  <article class="article-full" id="article-full">
+    <button class="read-btn" onclick="closeArticle()">← Back to Home</button>
+    <div id="article-content"></div>
+  </article>
+
+</section>
+
+<aside class="sidebar">
+
+  <section class="side-card" id="about">
+    <h3>About Me</h3>
+
+    <div class="profile">
+      <img
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
+        alt="Profile photo">
       <div>
-        <h1>Porush <span>Blogs</span></h1>
-        <div class="tagline">Dream • Write • Inspire</div>
+        <h4>Porush Sharma</h4>
+        <p>Blogger | Dreamer | Learner</p>
       </div>
-    </a>
+    </div>
 
-    <nav>
-      <a href="#" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#blogs">Blogs</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <p class="about-text">
+      I am passionate about learning, exploring new ideas and sharing
+      my thoughts with the world. Through this blog, I want to share
+      my journey, knowledge and experiences.
+    </p>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Welcome to<br><span>Porush Blogs!</span></h2>
-      <p>A place where I share my thoughts, journey, and ideas with the world.</p>
-      <a href="#blogs" class="btn">Explore My Journey →</a>
+    <div class="quote">
+      "Dream Big,<br>Keep Going!"
     </div>
   </section>
 
-  <main class="main">
-    <section id="blogs">
-      <h2 class="section-heading">My Personal Story</h2>
+  <section class="side-card" id="contact">
+    <h3>Stay Connected</h3>
+    <p class="about-text">
+      Follow me on social media and stay connected for new stories and updates!
+    </p>
 
-      <div id="article-container">
-        <p class="status">Loading your article...</p>
-      </div>
+    <div class="social-links">
+      <!-- Replace these links with your actual profiles -->
+      <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+      <a href="https://github.com/porush586" target="_blank" rel="noopener" aria-label="GitHub">●</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a href="mailto:your-email@example.com" aria-label="Email">✉</a>
+    </div>
+  </section>
 
-      <article class="article-full" id="article-full">
-        <button class="read-btn" onclick="closeArticle()">← Back to Home</button>
-        <div id="article-content"></div>
-      </article>
-    </section>
+</aside>
+</main>
 
-    <aside class="sidebar">
+<footer>
+  <p>© <span id="year"></span> Porush Blogs. All rights reserved.</p>
+  <p>Dream • Write • Inspire</p>
+  <p>Made with ❤️ by Porush</p>
+</footer>
 
-      <section class="side-card" id="about">
-        <h3>About Me</h3>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
 
-        <div class="profile">
-          <img
-            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
-            alt="Profile photo placeholder">
-          <div>
-            <h4>Porush Sharma</h4>
-            <p>Blogger | Dreamer | Learner</p>
+const OWNER = "porush586";
+const REPO = "Porush586.github.io";
+const POST_FOLDER = "content/posts";
+
+let allPosts = [];
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
+}
+
+function getField(frontMatter, field) {
+  const regex = new RegExp(
+    "^" + field + ":\\s*(?:[\"']([^\"']*)[\"']|(.*))$",
+    "mi"
+  );
+  const match = frontMatter.match(regex);
+  return match ? (match[1] ?? match[2] ?? "").trim() : "";
+}
+
+function parsePost(raw, filename) {
+  const match = raw.match(
+    /^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n?([\s\S]*)$/
+  );
+
+  if (!match) return null;
+
+  const frontMatter = match[1];
+  const body = match[2];
+
+  return {
+    title: getField(frontMatter, "title") || filename,
+    description: getField(frontMatter, "description") || "Read my latest story.",
+    category: getField(frontMatter, "category") || "Personal",
+    date: getField(frontMatter, "date"),
+    cover:
+      getField(frontMatter, "cover") ||
+      getField(frontMatter, "image") ||
+      getField(frontMatter, "cover_image"),
+    body
+  };
+}
+
+function getImage(post) {
+  const image = post.cover;
+
+  if (!image) {
+    return "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85";
+  }
+
+  if (/^https?:\/\//i.test(image)) return image;
+
+  if (image.startsWith("/")) return image;
+
+  return "/" + image;
+}
+
+function openArticle(index) {
+  const post = allPosts[index];
+  if (!post) return;
+
+  document.getElementById("article-content").innerHTML = `
+    <span class="category">${escapeHTML(post.category)}</span>
+    <h1>${escapeHTML(post.title)}</h1>
+    <p class="article-meta">📅 ${escapeHTML(post.date || "Blog Post")}</p>
+    ${marked.parse(post.body)}
+  `;
+
+  const fullArticle = document.getElementById("article-full");
+  fullArticle.style.display = "block";
+  fullArticle.scrollIntoView({behavior:"smooth"});
+}
+
+function closeArticle() {
+  document.getElementById("article-full").style.display = "none";
+  document.getElementById("blogs").scrollIntoView({behavior:"smooth"});
+}
+
+async function loadPosts() {
+  const featured = document.getElementById("featured-container");
+  const latest = document.getElementById("latest-container");
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${POST_FOLDER}`
+    );
+
+    if (!response.ok) {
+      throw new Error("GitHub posts could not be loaded.");
+    }
+
+    const files = await response.json();
+
+    const markdownFiles = files.filter(file =>
+      file.type === "file" &&
+      file.name.toLowerCase().endsWith(".md")
+    );
+
+    const posts = await Promise.all(
+      markdownFiles.map(async file => {
+        try {
+          const result = await fetch(file.download_url);
+          if (!result.ok) return null;
+
+          const raw = await result.text();
+
+          return parsePost(
+            raw,
+            file.name.replace(/\.md$/i, "")
+          );
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    allPosts = posts.filter(post => post !== null);
+
+    if (allPosts.length === 0) {
+      featured.innerHTML =
+        '<p class="status">Abhi koi blog publish nahi hua hai.</p>';
+      latest.innerHTML = "";
+      return;
+    }
+
+    // My Journey always gets featured priority.
+    const journeyIndex = allPosts.findIndex(post =>
+      post.title.toLowerCase().includes("my journey")
+    );
+
+    const featuredIndex = journeyIndex >= 0 ? journeyIndex : 0;
+    const featuredPost = allPosts[featuredIndex];
+
+    featured.innerHTML = `
+      <div class="article-card">
+        <img class="article-image"
+          src="${escapeHTML(getImage(featuredPost))}"
+          alt="${escapeHTML(featuredPost.title)}">
+
+        <div class="article-info">
+          <span class="category">
+            ● ${escapeHTML(featuredPost.category)}
+          </span>
+
+          <h3>${escapeHTML(featuredPost.title)}</h3>
+          <p>${escapeHTML(featuredPost.description)}</p>
+
+          <div class="article-meta">
+            <span>📅 ${escapeHTML(featuredPost.date || "Blog Post")}</span>
+            <span>📖 ${escapeHTML(featuredPost.category)}</span>
           </div>
+
+          <button class="read-btn" onclick="openArticle(${featuredIndex})">
+            Read More →
+          </button>
         </div>
+      </div>
+    `;
 
-        <p class="about-text">
-          I'm here to share my thoughts, experiences and ideas.
-          Let's learn, grow and inspire each other!
-        </p>
+    // All remaining posts appear in Latest Stories.
+    const otherPosts = allPosts
+      .map((post,index) => ({post,index}))
+      .filter(item => item.index !== featuredIndex)
+      .sort((a,b) => {
+        return (Date.parse(b.post.date) || 0) -
+               (Date.parse(a.post.date) || 0);
+      });
 
-        <div class="quote">
-          “Dream Big,<br>Keep Going!”
+    if (otherPosts.length === 0) {
+      latest.innerHTML =
+        '<p class="status">Your next story will appear here!</p>';
+      return;
+    }
+
+    latest.innerHTML = otherPosts.map(({post,index}) => `
+      <div class="latest-card">
+
+        <img
+          src="${escapeHTML(getImage(post))}"
+          alt="${escapeHTML(post.title)}">
+
+        <div class="latest-card-content">
+
+          <span class="category">
+            ● ${escapeHTML(post.category)}
+          </span>
+
+          <h3>${escapeHTML(post.title)}</h3>
+          <p>${escapeHTML(post.description)}</p>
+
+          <div class="article-meta">
+            <span>📅 ${escapeHTML(post.date || "Blog Post")}</span>
+          </div>
+
+          <button class="read-btn" onclick="openArticle(${index})">
+            Read More →
+          </button>
+
         </div>
-      </section>
+      </div>
+    `).join("");
 
-      <section class="side-card" id="contact">
-        <h3>Stay Connected</h3>
-        <p class="about-text">
-          Follow me for more updates and new posts!
-        </p>
+  } catch (error) {
+    featured.innerHTML = `
+      <p class="status">
+        Blog load nahi ho paya. Internet connection aur GitHub
+        repository check karo.
+      </p>
+    `;
+    latest.innerHTML = "";
+    console.error(error);
+  }
+}
 
-        <div class="social-links">
-          <!-- Apne actual profile links yahan add karna -->
-          <a href="https://youtube.com/" target="_blank" aria-label="YouTube">▶</a>
-          <a href="https://github.com/porush586" target="_blank" aria-label="GitHub">●</a>
-          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">in</a>
-          <a href="mailto:your-email@example.com" aria-label="Email">✉</a>
-        </div>
-      </section>
-
-    </aside>
-  </main>
-
-  <footer>
-    <p>© <span id="year"></span> Porush Blogs. All rights reserved.</p>
-    <p>Dream • Write • Inspire</p>
-    <p>Made with ❤️ by Porush</p>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const OWNER = "porush586";
-    const REPO = "Porush586.github.io";
-    const POST_FOLDER = "content/posts";
-
-    async function loadMyJourney() {
-      const container = document.getElementById("article-container");
-
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${OWNER}/${REPO}/contents/${POST_FOLDER}`
-        );
-
-        if (!response.ok) {
-          throw new Error("Could not access blog posts.");
-        }
-
-        const files = await response.json();
-        const markdownFiles = files.filter(file =>
-          file.name.toLowerCase().endsWith(".md")
-        );
-
-        let selectedPost = null;
-
-        for (const file of markdownFiles) {
-          const postResponse = await fetch(file.download_url);
-          if (!postResponse.ok) continue;
-
-          const raw = await postResponse.text();
-          const match = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
-
-          if (!match) continue;
-
-          const frontMatter = match[1];
-          const body = match[2];
-
-          const titleMatch = frontMatter.match(/^title:\s*["']?(.+?)["']?\s*$/m);
-          const title = titleMatch ? titleMatch[1].replace(/["']/g, "").trim() : "";
-
-          if (title.toLowerCase().includes("my journey")) {
-            const descriptionMatch = frontMatter.match(/^description:\s*["']?(.+?)["']?\s*$/m);
-            const dateMatch = frontMatter.match(/^date:\s*["']?(.+?)["']?\s*$/m);
-            const coverMatch = frontMatter.match(/^(?:cover|image):\s*["']?(.+?)["']?\s*$/m);
-
-            selectedPost = {
-              title,
-              description: descriptionMatch ? descriptionMatch[1].replace(/["']/g, "") : "My personal journey, dreams and experiences.",
-              date: dateMatch ? dateMatch[1].replace(/["']/g, "") : "",
-              cover: coverMatch ? coverMatch[1].replace(/["']/g, "") : "",
-              body
-            };
-
-            break;
-          }
-        }
-
-        if (!selectedPost) {
-          container.innerHTML = `
-            <p class="status">
-              My Journey article abhi nahi mila. Check karo ki post
-              <strong>content/posts</strong> folder mein published hai.
-            </p>`;
-          return;
-        }
-
-        const image = selectedPost.cover || 
-          "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85";
-
-        container.innerHTML = `
-          <div class="article-card">
-            <img class="article-image"
-              src="${escapeHTML(image)}"
-              alt="My Journey article image">
-
-            <div class="article-info">
-              <span class="category">● Personal</span>
-              <h3>${escapeHTML(selectedPost.title)}</h3>
-              <p>${escapeHTML(selectedPost.description)}</p>
-
-              <div class="article-meta">
-                <span>📅 ${escapeHTML(selectedPost.date || "Personal Blog")}</span>
-                <span>📖 Personal Story</span>
-              </div>
-
-              <button class="read-btn" onclick="openArticle()">
-                Read More →
-              </button>
-            </div>
-          </div>`;
-
-        window.myJourneyBody = selectedPost.body;
-
-      } catch (error) {
-        container.innerHTML = `
-          <p class="status">
-            Article load nahi ho paya. Internet connection aur GitHub
-            repository check karo. Thodi der baad refresh karna.
-          </p>`;
-        console.error(error);
-      }
-    }
-
-    function openArticle() {
-      const fullArticle = document.getElementById("article-full");
-      const content = document.getElementById("article-content");
-
-      content.innerHTML = marked.parse(window.myJourneyBody || "");
-      fullArticle.style.display = "block";
-      fullArticle.scrollIntoView({ behavior: "smooth" });
-    }
-
-    function closeArticle() {
-      document.getElementById("article-full").style.display = "none";
-      document.getElementById("blogs").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      })[char]);
-    }
-
-    loadMyJourney();
-  </script>
+loadPosts();
+</script>
 
 </body>
 </html>
